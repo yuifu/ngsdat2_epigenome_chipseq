@@ -103,7 +103,7 @@ $ perl /anaconda3/share/homer-*/configureHomer.pl -install mm10
 
 ### deepToolsのインストール
 ```
-$ conda install -c bioconda deeptools samtools=1.9=h8ee4bcc_1 openssl=1.0
+$ conda install -c bioconda deeptools
 $ deeptools --version
 ```
 
