@@ -7,11 +7,7 @@
 　以下のコマンドでfastpをインストールする。
 
 ```
-$ git clone https://github.com/OpenGene/fastp.git
-$ cd fastp
-$ make
-$ sudo make install
-$ fastp --help
+$ conda install -c bioconda fastp
 ```
 
 ### Bowtie 2 のインストール
