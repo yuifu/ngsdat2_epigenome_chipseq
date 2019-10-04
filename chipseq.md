@@ -18,7 +18,7 @@ $ conda install -c bioconda bowtie2
 ```
 
 #### Pre-built indexの取得
-　マッピングのためのデータベースPre-built indexを取得する。Bowtie 2 のページ（http://bowtie-bio.sourceforge.net/bowtie2/index.shtml ）へアクセスする。右側の”Indexes”という箇所から、対象の生物種に合ったPre-built indexをダウンロードする。
+　マッピングのためのデータベースPre-built indexを取得する。Bowtie 2 のページ（http://bowtie-bio.sourceforge.net/bowtie2/index.shtml ）へアクセスする。右側の"Indexes"という箇所から、対象の生物種に合ったPre-built indexをダウンロードする。
 
 　本項で使用する種はマウスなので、M. Musculus (mm10) のリンク先アドレス（ftp://ftp.ccb.jhu.edu/pub/data/bowtie2_indexes/mm10.zip）をコピーし、以下のコマンドでマウスゲノム (mm10)のインデックスファイルをダウンロードし、解凍する。
 
@@ -404,7 +404,7 @@ $ cd ~/chipseq
 $ mkdir macs2    # MACS2の出力結果を保存するディレクトリを作成する（必須ではない）
 ```
 
-　以下のコマンドで、bowtie2/BRD4_ChIP_IFNy.trim.uniq.bamおよびbowtie2/IRF1_ChIP_IFNy.trim.uniq.bamに対してそれぞれMACS2を適用し、ピーク検出を行う。なお、ここでは、bowtie2/Input_DNA.trim.uniq.bamをChIP-seq実験のネガティブコントロールとして “-c” で指定している。
+　以下のコマンドで、bowtie2/BRD4_ChIP_IFNy.trim.uniq.bamおよびbowtie2/IRF1_ChIP_IFNy.trim.uniq.bamに対してそれぞれMACS2を適用し、ピーク検出を行う。なお、ここでは、bowtie2/Input_DNA.trim.uniq.bamをChIP-seq実験のネガティブコントロールとして "-c" で指定している。
 
 ```
 $ cd ~/chipseq
@@ -417,7 +417,7 @@ $ deactivate    # 元の環境へ切り替える。
 ```
 
 > -g：生物種を指定する。マウスだとmm、ヒトだとhsにする。
-> -q：ピークを出力する際の「補正されたp値」（adjusted p-value）あるいはq値(q-value)の閾値を表す。デフォルトではq値の閾値は0.05である。p値ではなくq値を用いるのは、多重検定補正のためである。MACS2ではピークの”確からしさ”に関する統計的仮説検定をピーク候補の数だけ行う（多重検定）。このような場合、たとえ帰無仮説を棄却できない場合でも何度も検定を行えば、少なくとも１度は帰無仮説が棄却される割合が検定回数に従って増え、偽陽性の危険性が高まる。そのため、多重検定補正が必要となる。この場合、通常のp値ではなくp値に多重検定補正を施したq値(q-value)やFDR(False discovery rate)で閾値を設定する。MACS2では、BH法 (Benjamini-Hochberg method)を用いてFDRを計算している。多重検定補正については参考文献1を参照されたい。
+> -q：ピークを出力する際の「補正されたp値」（adjusted p-value）あるいはq値(q-value)の閾値を表す。デフォルトではq値の閾値は0.05である。p値ではなくq値を用いるのは、多重検定補正のためである。MACS2ではピークの"確からしさ"に関する統計的仮説検定をピーク候補の数だけ行う（多重検定）。このような場合、たとえ帰無仮説を棄却できない場合でも何度も検定を行えば、少なくとも１度は帰無仮説が棄却される割合が検定回数に従って増え、偽陽性の危険性が高まる。そのため、多重検定補正が必要となる。この場合、通常のp値ではなくp値に多重検定補正を施したq値(q-value)やFDR(False discovery rate)で閾値を設定する。MACS2では、BH法 (Benjamini-Hochberg method)を用いてFDRを計算している。多重検定補正については参考文献1を参照されたい。
 > -B：bigBedファイルを出力させる
 > -c：コントロールのデータを指定する。ChIP-seqのコントロール実験が実施されていないといった理由からコントロールのデータを用いない場合は使用しない。
 
@@ -574,7 +574,7 @@ $ mkdir homer/IRF1_ChIP_IFNy
 $ findMotifsGenome.pl macs2/IRF1_ChIP_IFNy_summits.bed mm10 homer/IRF1_ChIP_IFNy -size 200 -mask
 ```
 
-　homer/BRD4_ChIP_IFNy および homer/IRF1_ChIP_IFNyのそれぞれに、以下のようなファイルが出力される。このうち “homerResults.html”と”knownResults.html”には、それぞれ新規モチーフの探索の結果および既知モチーフのスキャンの結果が要約されている。
+　homer/BRD4_ChIP_IFNy および homer/IRF1_ChIP_IFNyのそれぞれに、以下のようなファイルが出力される。このうち "homerResults.html"と"knownResults.html"には、それぞれ新規モチーフの探索の結果および既知モチーフのスキャンの結果が要約されている。
 ```
 homerMotifs.all.motifs
 homerMotifs.motifs10
@@ -592,7 +592,7 @@ seq.autonorm.tsv
 
 ### deepToolsによるChIP-seqのリードのシグナルの分布の可視化
 
-　以下のコマンドで、マウスの遺伝子モデルのGTFファイル(~/gencode/gencode.vM20.annotation.gtf) をregions、BRD4 ChIP-seqのbigWigファイルをscoreFile (deeptools/BRD4_ChIP_IFNy.trim.uniq.bw ) として、matrix ファイル（deepTools独自の形式のファイル）を作成する。computeMatrixコマンドの”scale-regions”というモードを使用する。
+　以下のコマンドで、マウスの遺伝子モデルのGTFファイル(~/gencode/gencode.vM20.annotation.gtf) をregions、BRD4 ChIP-seqのbigWigファイルをscoreFile (deeptools/BRD4_ChIP_IFNy.trim.uniq.bw ) として、matrix ファイル（deepTools独自の形式のファイル）を作成する。computeMatrixコマンドの"scale-regions"というモードを使用する。
 
 ```
 $ cd ~/chipseq
@@ -640,7 +640,7 @@ $ plotHeatmap -m deeptools/IRF1_ChIP_IFNy.trim.uniq.matrix_gencode_vM20_gene.txt
 ```
 
 
-　次に以下のコマンドで、BRD4 ChIP-seqのリードの分布 (deeptools/BRD4_ChIP_IFNy.trim.uniq.bw)がIRF1 ChIP-seqのピーク (macs2/IRF1_ChIP_IFNy_summits.bed) を中心としたときにゲノム全体としてどうなっているかをaggregation plotとして描くための準備をする。computeMatrixコマンドの”reference-point”というモードを使用する。
+　次に以下のコマンドで、BRD4 ChIP-seqのリードの分布 (deeptools/BRD4_ChIP_IFNy.trim.uniq.bw)がIRF1 ChIP-seqのピーク (macs2/IRF1_ChIP_IFNy_summits.bed) を中心としたときにゲノム全体としてどうなっているかをaggregation plotとして描くための準備をする。computeMatrixコマンドの"reference-point"というモードを使用する。
 
 ```
 $ cd ~/
@@ -735,7 +735,7 @@ chr1	10220210	10220391	IRF1_ChIP_IFNy_peak_10	88	.
 
 - GREATのウェブサイト: http://great.stanford.edu
 
-　まず、"Species Assembly"でゲノムのバージョンを選ぶ。ここでは”Mouse: NCBI build 38 (UCSC mm10, Dec/2011)”を選択する。次に、"Test regions" のBED fileには [ファイルを選択] (Choose File) をボタンをクリックして、作成したBEFファイル(IRF1_ChIP_IFNy_peaks.narrowPeak.bed) を選ぶ。
+　まず、"Species Assembly"でゲノムのバージョンを選ぶ。ここでは"Mouse: NCBI build 38 (UCSC mm10, Dec/2011)"を選択する。次に、"Test regions" のBED fileには [ファイルを選択] (Choose File) をボタンをクリックして、作成したBEFファイル(IRF1_ChIP_IFNy_peaks.narrowPeak.bed) を選ぶ。
 
 
 　次に、Association rule settings の [Show settings]ボタンを押すと、下図の項目が現れる。　GREATツールは、与えたBEDファイルの領域（今回はピーク領域）に対し、遺伝子を割り当てるが、その割り当て方を選択できる。今回は、[Basal plus extension]を選択し、[Submit]ボタンを押す。
@@ -765,7 +765,7 @@ $ open -a RStudio
 
 > ol <- findOverlapsOfPeaks(gr1, gr2) # ピーク同士の重なりを調査する
 
-> makeVennDiagram(ol, NameOfPeaks=c(“BRD4”, “IRF1”)) # 重なりをベン図として可視化する
+> makeVennDiagram(ol, NameOfPeaks=c("BRD4", "IRF1")) # 重なりをベン図として可視化する
 ```
 
 
