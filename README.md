@@ -1,4 +1,4 @@
-# ０から始めるエピゲノム解析（ChIP-seq） ver2 のサポートページ
+# 『次世代シークエンサーDRY解析教本 改訂第2版』「０から始めるエピゲノム解析（ChIP-seq） ver2（尾崎遼）」のサポートページ
 
 - [ChIP-seq解析](chipseq.md)
 - [ATAC-seq解析](chipseq.md)
