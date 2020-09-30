@@ -320,7 +320,7 @@ $ mkdir bowtie2
 ```
 $ cd ~/chipseq
 $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
-    -U BRD4_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/BRD4_ChIP_IFNy.trim.sam
+    -U fastp/BRD4_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/BRD4_ChIP_IFNy.trim.sam
 ```
 
 > -p：使用するコア数を指定する。
@@ -346,9 +346,9 @@ $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
 ```
 $ cd ~/chipseq
 $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
-    -U IRF1_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/IRF1_ChIP_IFNy.trim.sam
+    -U fastp/IRF1_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/IRF1_ChIP_IFNy.trim.sam
 $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
-    -U Input_DNA.R1.trim.fastq.gz > bowtie2/Input_DNA.trim.sam
+    -U fastp/Input_DNA.R1.trim.fastq.gz > bowtie2/Input_DNA.trim.sam
 ```
 
 　以下のファイルができたことを確認する。
