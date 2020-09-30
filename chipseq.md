@@ -376,7 +376,7 @@ bowtie2/BRD4_ChIP_IFNy.trim.uniq.bam
 　同様に、残りのSAMファイルについてもBAMへの変換を行う。
 ```
 $ cd ~/chipseq
-$ samtools view -bhS -F 0x4 -q 42 bowtie2/IRF1_ChIP_IFNy.trim.sam | samtools sort -T bowtie2/IRF1_ChIP_IFNy.trim - > bowtie2/Input_DNA.trim.uniq.bam
+$ samtools view -bhS -F 0x4 -q 42 bowtie2/IRF1_ChIP_IFNy.trim.sam | samtools sort -T bowtie2/IRF1_ChIP_IFNy.trim - > bowtie2/IRF1_ChIP_IFNy.trim.uniq.bam
 $ samtools view -bhS -F 0x4 -q 42 bowtie2/Input_DNA.trim.sam | samtools sort -T bowtie2/Input_DNA.trim - > bowtie2/Input_DNA.trim.uniq.bam
 ```
 
