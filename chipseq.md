@@ -643,7 +643,7 @@ $ plotHeatmap -m deeptools/IRF1_ChIP_IFNy.trim.uniq.matrix_gencode_vM20_gene.txt
 　次に以下のコマンドで、BRD4 ChIP-seqのリードの分布 (deeptools/BRD4_ChIP_IFNy.trim.uniq.bw)がIRF1 ChIP-seqのピーク (macs2/IRF1_ChIP_IFNy_summits.bed) を中心としたときにゲノム全体としてどうなっているかをaggregation plotとして描くための準備をする。computeMatrixコマンドの”reference-point”というモードを使用する。
 
 ```
-$ cd ~/
+$ cd ~/chipseq
 $ computeMatrix reference-point \
 	--regionsFileName macs2/IRF1_ChIP_IFNy_summits.bed \
 	--scoreFileName deeptools/BRD4_ChIP_IFNy.trim.uniq.bw \
@@ -680,7 +680,7 @@ $ plotHeatmap -m deeptools/BRD4_ChIP_IFNy.trim.IRF1_ChIP_IFNy_summits.matrix.txt
 
 ```
 $ computeMatrix scale-regions \
-	--regionsFileName ../data/gencode/gencode.vM20.annotation.gtf \
+	--regionsFileName ~/gencode/gencode.vM20.annotation.gtf \
 	--scoreFileName deeptools/BRD4_ChIP_IFNy.trim.uniq.bw \
 	deeptools/IRF1_ChIP_IFNy.trim.uniq.bw \
 	--outFileName deeptools/chipseq_matrix_gencode_vM20_gene.txt.gz \
