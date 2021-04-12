@@ -110,7 +110,7 @@ $ system_profiler SPHardwareDataType | grep Cores
 ```
 $ cd ~/atacseq/
 bowtie2 -p 2 --no-mixed --no-discordant -X 2000 \
--x data/external/bowtie2_index/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.bowtie_index \
+-x ~/bowtie2_index/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.bowtie_index \
 -1 fastp/SRR891269_1.trim.fastq.gz -2 fastp/SRR891269_2.trim.fastq.gz > bowtie2/SRR891269.trim.sam
 -X 2000：ペアエンドリードのマッピングの際に、Read 1の5’端とRead 2 の5’端の間の距離が2,000塩基以下になるマッピングだけを探索するように指定する。
 --no-mixed：ペアエンドリードをペアとしてマッピングできなかった際に、シングルエンドリードとしてマップさせるようにしない。

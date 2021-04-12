@@ -33,7 +33,7 @@ $ unzip mm10.zip
 ```
 $ cd ~/bowtie2_index
 $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_genbank/Eukaryotes/vertebrates_mammals/Homo_sapiens/GRCh38/seqs_for_alignment_pipelines/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.bowtie_index.tar.gz
-$ tar xvzf bowtie2_index/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.bowtie_index.tar.gz
+$ tar xvzf GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.bowtie_index.tar.gz
 ```
 
 　なお、IlluminaのiGenomesのページ (https://support.illumina.com/sequencing/sequencing_software/igenome.html) においても様々な生物種のゲノムに対するpre-built indexが配布されている。
@@ -319,7 +319,7 @@ $ mkdir bowtie2
 
 ```
 $ cd ~/chipseq
-$ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
+$ bowtie2 -p 2 -x ~/bowtie2_index/mm10 \
     -U fastp/BRD4_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/BRD4_ChIP_IFNy.trim.sam
 ```
 
@@ -345,9 +345,9 @@ $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
 
 ```
 $ cd ~/chipseq
-$ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
+$ bowtie2 -p 2 -x ~/bowtie2_index/mm10 \
     -U fastp/IRF1_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/IRF1_ChIP_IFNy.trim.sam
-$ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
+$ bowtie2 -p 2 -x ~/bowtie2_index/mm10 \
     -U fastp/Input_DNA.R1.trim.fastq.gz > bowtie2/Input_DNA.trim.sam
 ```
 
