@@ -320,7 +320,7 @@ $ mkdir bowtie2
 ```
 $ cd ~/chipseq
 $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
-    -U BRD4_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/BRD4_ChIP_IFNy.trim.sam
+    -U fastp/BRD4_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/BRD4_ChIP_IFNy.trim.sam
 ```
 
 > -p：使用するコア数を指定する。
@@ -346,9 +346,9 @@ $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
 ```
 $ cd ~/chipseq
 $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
-    -U IRF1_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/IRF1_ChIP_IFNy.trim.sam
+    -U fastp/IRF1_ChIP_IFNy.R1.trim.fastq.gz > bowtie2/IRF1_ChIP_IFNy.trim.sam
 $ bowtie2 -p 2 -x data/external/bowtie2_index/mm10 \
-    -U Input_DNA.R1.trim.fastq.gz > bowtie2/Input_DNA.trim.sam
+    -U fastp/Input_DNA.R1.trim.fastq.gz > bowtie2/Input_DNA.trim.sam
 ```
 
 　以下のファイルができたことを確認する。
@@ -376,7 +376,7 @@ bowtie2/BRD4_ChIP_IFNy.trim.uniq.bam
 　同様に、残りのSAMファイルについてもBAMへの変換を行う。
 ```
 $ cd ~/chipseq
-$ samtools view -bhS -F 0x4 -q 42 bowtie2/IRF1_ChIP_IFNy.trim.sam | samtools sort -T bowtie2/IRF1_ChIP_IFNy.trim - > bowtie2/Input_DNA.trim.uniq.bam
+$ samtools view -bhS -F 0x4 -q 42 bowtie2/IRF1_ChIP_IFNy.trim.sam | samtools sort -T bowtie2/IRF1_ChIP_IFNy.trim - > bowtie2/IRF1_ChIP_IFNy.trim.uniq.bam
 $ samtools view -bhS -F 0x4 -q 42 bowtie2/Input_DNA.trim.sam | samtools sort -T bowtie2/Input_DNA.trim - > bowtie2/Input_DNA.trim.uniq.bam
 ```
 
@@ -643,7 +643,7 @@ $ plotHeatmap -m deeptools/IRF1_ChIP_IFNy.trim.uniq.matrix_gencode_vM20_gene.txt
 　次に以下のコマンドで、BRD4 ChIP-seqのリードの分布 (deeptools/BRD4_ChIP_IFNy.trim.uniq.bw)がIRF1 ChIP-seqのピーク (macs2/IRF1_ChIP_IFNy_summits.bed) を中心としたときにゲノム全体としてどうなっているかをaggregation plotとして描くための準備をする。computeMatrixコマンドの"reference-point"というモードを使用する。
 
 ```
-$ cd ~/
+$ cd ~/chipseq
 $ computeMatrix reference-point \
 	--regionsFileName macs2/IRF1_ChIP_IFNy_summits.bed \
 	--scoreFileName deeptools/BRD4_ChIP_IFNy.trim.uniq.bw \
@@ -680,7 +680,7 @@ $ plotHeatmap -m deeptools/BRD4_ChIP_IFNy.trim.IRF1_ChIP_IFNy_summits.matrix.txt
 
 ```
 $ computeMatrix scale-regions \
-	--regionsFileName ../data/gencode/gencode.vM20.annotation.gtf \
+	--regionsFileName ~/gencode/gencode.vM20.annotation.gtf \
 	--scoreFileName deeptools/BRD4_ChIP_IFNy.trim.uniq.bw \
 	deeptools/IRF1_ChIP_IFNy.trim.uniq.bw \
 	--outFileName deeptools/chipseq_matrix_gencode_vM20_gene.txt.gz \
