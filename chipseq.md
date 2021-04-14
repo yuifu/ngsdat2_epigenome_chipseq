@@ -747,7 +747,7 @@ chr1	10220210	10220391	IRF1_ChIP_IFNy_peak_10	88	.
 liftover (https://genome.ucsc.edu/cgi-bin/hgLiftOver)などのツールを用いてゲノムの座標をhg19に合わせて変換する必要がある。
 
 
-###ChIPpeakAnnoによるピークへのアノテーション
+### ChIPpeakAnnoによるピークへのアノテーション
 
 　まず、以下のコマンドで、RStudioを起動する。
 
@@ -760,8 +760,8 @@ $ open -a RStudio
 　以下では、「BRD4 ChIP-seqのピークの集合」と「IRF1 ChIP-seqのピークの集合」がどのくらい重なるかを調べる。
 ```
 > library(ChIPpeakAnno)
-> gr1 <- toGRanges("macs2/BRD4_ChIP_IFNy_peaks.narrowPeak", format="narrowPeak", header=FALSE)
-> gr2 <- toGRanges("macs2/IRF1_ChIP_IFNy_peaks.narrowPeak", format="narrowPeak", header=FALSE)
+> gr1 <- toGRanges("~/chipseq/macs2/BRD4_ChIP_IFNy_peaks.narrowPeak", format="narrowPeak", header=FALSE)
+> gr2 <- toGRanges("~/chipseq/macs2/IRF1_ChIP_IFNy_peaks.narrowPeak", format="narrowPeak", header=FALSE)
 
 > ol <- findOverlapsOfPeaks(gr1, gr2) # ピーク同士の重なりを調査する
 
@@ -850,7 +850,7 @@ GRanges object with 2 ranges and 14 metadata columns:
 
 　以下のコマンドで、結果をタブ区切りファイルとして保存する。
 ```
-if(!dir.exists("ChIPpeakAnno")) dir.create("ChIPpeakAnno")
+if(!dir.exists("~/chipseq/ChIPpeakAnno")) dir.create("~/chipseq/ChIPpeakAnno")
 df_anno1 <- as.data.frame(anno1)
-write.table(df_anno1, "ChIPpeakAnno/BRD4_ChIP_IFNy_peaks.annot.txt", sep="\t", quote=F)
+write.table(df_anno1, "~/chipseq/ChIPpeakAnno/BRD4_ChIP_IFNy_peaks.annot.txt", sep="\t", quote=F)
 ```
