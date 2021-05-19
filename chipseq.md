@@ -115,7 +115,7 @@ $ brew install r
 
 #### RStudioのインストール
 ```
-$ brew cask install rstudio
+$ brew install rstudio --cask
 ```
 
 ### IGVのインストール
