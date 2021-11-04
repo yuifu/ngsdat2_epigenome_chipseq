@@ -39,26 +39,17 @@ $ tar xvzf GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.bowtie_index.tar.gz
 　なお、IlluminaのiGenomesのページ (https://support.illumina.com/sequencing/sequencing_software/igenome.html) においても様々な生物種のゲノムに対するpre-built indexが配布されている。
 
 ### MACS2のインストール
-　現行のMACS2は標準ではpython 2 のみに対応している。一方で、python 2 は2020年1月にサポートが終了する（参考文献７）。今後の継続性を考慮し、ここではpython 3 でのインストール方法を紹介する。なお、2019年2月現在では、 `pip` や `conda` といった はpython 2のみで正常にインストールできる。
-　まず、MACS2をインストールする環境を作る。
 
-```
-$ mkdir ~/tools
-$ cd ~/tools
-$ python3 -m venv MACS2/
-$ source MACS2/bin/activate
-```
+~~　現行のMACS2は標準ではpython 2 のみに対応している。一方で、python 2 は2020年1月にサポートが終了する（参考文献７）。今後の継続性を考慮し、ここではpython 3 でのインストール方法を紹介する。なお、2019年2月現在では、 `pip` や `conda` といった はpython 2のみで正常にインストールできる。~~
+~~　まず、MACS2をインストールする環境を作る。~~
+
+(2021/11/04 修正)  
+Python 3 版の MACS2 は `pip` コマンドで[インストールできるようになった](https://pypi.org/project/MACS2/)。
 
 　以下のコマンドでMACS2のpython 3版をインストールする。
 
 ```
-$ pip install --upgrade pip
-$ pip install numpy
-$ pip install cython
-$ git clone https://github.com/taoliu/MACS.git
-$ cd MACS
-$ git checkout remotes/origin/macs2python3
-$ python setup_w_cython.py install
+$ pip install MACS2
 ```
 
 　以下のコマンドでMACS2がインストールされたことを確認する。
@@ -67,18 +58,8 @@ $ python setup_w_cython.py install
 $ macs2 --help  # ヘルプメッセージが出力されればOK
 ```
 
-　以下のコマンドで、MACS2をインストールした環境から離脱する。
-
-```
-$ deactivate
-```
-
-　MACS2を使用する際には、あらかじめ以下のコマンドでMAC2をインストールした環境に変えればよい。
-```
-$ source ~/tools/MACS2/bin/activate
-```
-
 ### samtools のインストール
+
 ```
 $ brew install samtools
 ```
@@ -408,12 +389,10 @@ $ mkdir macs2    # MACS2の出力結果を保存するディレクトリを作�
 
 ```
 $ cd ~/chipseq
-$ source ~/tools/MACS2/bin/activate   # MACS2がインストールされた環境へ切り替える
 $ macs2 callpeak -t bowtie2/BRD4_ChIP_IFNy.trim.uniq.bam \
 -c bowtie2/Input_DNA.trim.uniq.bam -f BAM -g mm -n BRD4_ChIP_IFNy --outdir macs2 -B -q 0.01
 $ macs2 callpeak -t bowtie2/IRF1_ChIP_IFNy.trim.uniq.bam \
 -c bowtie2/Input_DNA.trim.uniq.bam -f BAM -g mm -n IRF1_ChIP_IFNy --outdir macs2 -B -q 0.01
-$ deactivate    # 元の環境へ切り替える。
 ```
 
 > -g：生物種を指定する。マウスだとmm、ヒトだとhsにする。

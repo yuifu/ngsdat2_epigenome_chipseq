@@ -158,11 +158,9 @@ MINIMUM_PCT=0
 　以下のコマンドで、MACS2によるピーク検出を行う。
 ```
 $ cd ~/atacseq
-$ 	source ~/tools/MACS2/bin/activate   # MACS2がインストールされた環境へ切り替える
 $ macs2 callpeak -t bowtie2/SRR891269.trim.proper_pairs.rmdup.bam \
 -f BAM --nomodel --shift -50 --extsize 100 -g hs -n SRR891269_atacseq \
 -B --outdir macs2
-$ deactivate    # 元の環境へ切り替える
 ```
 
 > TIPS：ATAC-seqデータにMACS2を使うときのコツ
